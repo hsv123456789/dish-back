@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
   name: String,
-  integrents: [String],
+  ingredients: {
+    item1: String,
+    item2: String,
+    item3: String,
+    item4: String,
+  },
   description: String,
 });
 
