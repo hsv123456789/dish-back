@@ -26,6 +26,28 @@ app.post("/post", async (req, res) => {
   res.json({ message: "Dish added", data });
 });
 
+app.put("/put/:id", async (req, res) => {
+  const id = req.params.id;
+
+  console.log(id);
+
+  console.log(req.body);
+
+  const oldData = req.body;
+
+  const data = await Dish.findByIdAndUpdate(id, oldData);
+
+  res.json({ message: "dish updated", data });
+});
+
+app.delete("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const data = await Dish.findByIdAndDelete(id);
+
+  res.json({ message: "dish deleted", data });
+});
+
 app.listen(8000, () => {
   console.log("server started at port 8000");
 });
